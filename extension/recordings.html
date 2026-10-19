@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Lumen recordings</title>
+<link rel="icon" href="icons/icon32.png">
+<link rel="stylesheet" href="ui.css"><link rel="stylesheet" href="recordings.css"></head>
+<body>
+<main>
+  <header><div class="brand"><span class="spark">✦</span> Lumen recordings</div>
+    <span class="small dim" id="usage"></span></header>
+
+  <section id="review" class="card" hidden>
+    <video id="player" controls playsinline></video>
+    <div class="review-bar">
+      <div><div id="review-title" class="title"></div><div id="review-meta" class="small dim"></div></div>
+      <div class="actions" id="review-actions"></div>
+    </div>
+    <div class="share-row" id="review-share" hidden></div>
+  </section>
+
+  <p class="small dim">Recordings stay on this computer, in Chrome’s storage for Lumen, whether you share them or not.
+    Download the ones you want to keep. <span id="site"></span></p>
+  <ul id="list"></ul>
+  <p id="empty" class="dim" hidden>No recordings yet. Click ✦ in the toolbar to make one.</p>
+</main>
+<script type="module" src="recordings.js"></script>
+</body></html>

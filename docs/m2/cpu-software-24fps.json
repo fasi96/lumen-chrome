@@ -1,0 +1,82 @@
+{
+  "tab": {
+    "cpuOff": 0.6921186050084498,
+    "cpuOn": 1.22530555769083,
+    "byTypeOff": {
+      "browser": 0.02,
+      "utility": 0.01,
+      "zygote": 0,
+      "renderer": 0.27,
+      "gpu-process": 0.39
+    },
+    "byTypeOn": {
+      "browser": 0.06,
+      "utility": 0.04,
+      "zygote": 0,
+      "renderer": 0.7,
+      "gpu-process": 0.43
+    },
+    "stats": {
+      "frames": 354,
+      "segments": 81,
+      "cropMs": 0.9999999962747097,
+      "segMs": 1381.1999999955297,
+      "shapeMs": 35.700000021606684,
+      "drawMs": 0,
+      "draws": 0,
+      "maskArea": 0.5184326171875,
+      "since": 15934.300000000745,
+      "sent": 354,
+      "sendMs": 859.3999999985099,
+      "wallMs": 14793.10000000149,
+      "delegate": "CPU",
+      "inferMs": 1163.1000000163913,
+      "copyMs": 12.999999988824129,
+      "painted": 353
+    },
+    "bubbleCores": 0.5331869526823803,
+    "ownCore": 0.15394339252838765,
+    "fps": 23.9300755081737,
+    "segPerSec": 5.475525751870253
+  },
+  "screen": {
+    "cpuOff": 0.5466287383716455,
+    "cpuOn": 1.0854858548585484,
+    "byTypeOff": {
+      "browser": 0.02,
+      "utility": -0.01,
+      "zygote": 0,
+      "renderer": 0.29,
+      "gpu-process": 0.25
+    },
+    "byTypeOn": {
+      "browser": 0.08,
+      "utility": 0.04,
+      "zygote": 0,
+      "renderer": 0.7,
+      "gpu-process": 0.27
+    },
+    "stats": {
+      "frames": 349,
+      "segments": 86,
+      "cropMs": 629.3999999836087,
+      "segMs": 1328.0999999940395,
+      "shapeMs": 29.900000043213367,
+      "drawMs": 102.30000008270144,
+      "draws": 360,
+      "maskArea": 0.5679931640625,
+      "since": 46858.5,
+      "written": 360,
+      "dropped": 0,
+      "composeMs": 2300.9000000543892,
+      "wallMs": 14536.900000002235,
+      "delegate": "CPU",
+      "inferMs": 1140.699999999255,
+      "copyMs": 12.900000005960464
+    },
+    "bubbleCores": 0.5388571164869029,
+    "ownCore": 0.2949941184210245,
+    "fps": 24.007869628321465,
+    "segPerSec": 5.915979335345691
+  }
+}

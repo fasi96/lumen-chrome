@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Lumen share site</title>
+<link rel="icon" href="icons/icon32.png">
+<link rel="stylesheet" href="ui.css">
+<style>
+  main { max-width: 640px; margin: 0 auto; padding: 40px 16px; display: flex; flex-direction: column; gap: 16px; }
+  h1 { margin: 0; font-size: 24px; } h1 .spark { color: var(--accent); }
+  .card { padding: 16px 18px; } .card h2 { margin: 0 0 6px; font-size: 15px; }
+  textarea { width: 100%; min-height: 70px; font: 13px ui-monospace, monospace; color: var(--text); background: var(--bg);
+             border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; resize: vertical; }
+  code { background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; font-size: 12.5px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+  #msg.err { color: var(--rec); } #msg.ok { color: var(--ok); }
+  .check { display: flex; gap: 10px; align-items: flex-start; margin: 10px 0 4px; cursor: pointer; }
+  .check input { margin-top: 3px; accent-color: var(--accent); }
+  .check .small { display: block; margin-top: 2px; }
+  [hidden] { display: none !important; }
+</style></head>
+<body><main>
+  <h1><span class="spark">✦</span> Share links</h1>
+  <p class="dim">Lumen puts the videos you share on <b>your own</b> Cloudflare account (free for most people). There is no
+    Lumen server: the link, the video and the stats are yours. Without a share site, recordings still save as MP4s on
+    this computer.</p>
+
+  <section class="card" id="connected" hidden>
+    <h2>Connected</h2>
+    <p>Share links go to <b id="c-site"></b>, as “<span id="c-name"></span>”.</p>
+    <p class="small dim" id="c-used"></p>
+    <label class="check"><input type="checkbox" id="c-ai"> <span>Transcript, title and chapters
+      <span class="small dim">Your share site’s AI (Cloudflare Workers AI, in your account, free for about 200 minutes
+      a day) writes them from your mic after each share. Off: links show just the video.</span></span></label>
+    <label class="check"><input type="checkbox" id="c-clean"> <span>Cut ums and long pauses
+      <span class="small dim">Before uploading, the ums, uhs and pauses over 1.2 s are cut out of the shared copy, with
+      the same AI. The recording on this computer stays uncut. Needs the transcript switch above.</span></span></label>
+    <div class="row">
+      <a class="btn" id="c-open" target="_blank">Open my share site</a>
+      <button class="btn danger" id="disconnect">Disconnect</button>
+    </div>
+    <p class="small dim">Disconnecting removes this computer’s key from your share site. Videos you already shared stay.</p>
+  </section>
+
+  <section class="card" id="paste">
+    <h2>I already have a Lumen share site</h2>
+    <p class="small dim">On the computer where you set it up (Omarchy), run this in a terminal, then paste the code here:</p>
+    <p><code>lumen share connect-code --copy</code></p>
+    <p class="small dim">It makes a key just for this browser (you can revoke it on your dashboard under Devices).
+      Your share site’s main key stays on that computer.</p>
+    <textarea id="code" placeholder="lumen1:…" spellcheck="false" autocomplete="off"></textarea>
+    <div class="row"><button class="btn primary" id="go">Connect</button> <span id="msg" class="small"></span></div>
+  </section>
+
+  <section class="card" id="new">
+    <h2>I don’t have one yet</h2>
+    <p class="small dim">Lumen can set up your share site on your Cloudflare account for you, in a few minutes, without a
+      terminal. Cloudflare asks for a payment method on file to switch on video storage (R2); it stays free up to 10 GB,
+      and watching videos is always free.</p>
+    <div class="row"><a class="btn primary" href="setup.html">Set up my share site</a></div>
+  </section>
+</main>
+<script type="module" src="connect.js"></script>
+</body></html>

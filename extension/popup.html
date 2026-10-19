@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Lumen</title>
+<link rel="stylesheet" href="ui.css"><link rel="stylesheet" href="popup.css"></head>
+<body>
+  <header class="brand"><span class="spark">✦</span> Lumen</header>
+
+  <div class="seg" role="radiogroup" aria-label="What to record">
+    <button role="radio" data-mode="tab" id="mode-tab">This tab</button>
+    <button role="radio" data-mode="screen" id="mode-screen">Screen or window</button>
+  </div>
+  <p class="hint small dim" id="mode-hint"></p>
+
+  <label class="row"><span>Microphone</span><input type="checkbox" id="mic" class="switch"></label>
+  <p class="small notice" id="mic-perm" hidden>Lumen needs your OK to use the mic once. <a href="welcome.html" target="_blank">Allow mic</a></p>
+  <div id="mic-opts" hidden>
+    <div class="fields2">
+      <label class="field"><span class="small dim">Mic</span><select id="micDevice"><option value="">Default mic</option></select></label>
+      <label class="field"><span class="small dim">Sound</span><select id="sound"></select></label>
+    </div>
+    <p class="small dim hint" id="sound-hint"></p>
+  </div>
+  <label class="row"><span>Face bubble</span><input type="checkbox" id="bubble" class="switch"></label>
+  <div id="bubble-opts" hidden>
+    <p class="small notice" id="cam-perm" hidden>Lumen needs your OK to use the camera once. <a href="welcome.html" target="_blank">Allow camera</a></p>
+    <label class="field"><span class="small dim">Camera</span><select id="camera"><option value="">Default camera</option></select></label>
+    <div class="fields3">
+      <label class="field"><span class="small dim">Shape</span><select id="bubbleShape">
+        <option value="blob">Blob</option><option value="circle">Circle</option><option value="card">Card</option></select></label>
+      <label class="field"><span class="small dim">Outline</span><select id="bubbleOutline">
+        <option value="plain">Plain</option><option value="glow">Glow</option><option value="rainbow">Rainbow</option></select></label>
+      <label class="field"><span class="small dim">Size</span><select id="bubbleSize">
+        <option value="0">Small</option><option value="1">Medium</option><option value="2">Large</option></select></label>
+    </div>
+    <label class="field"><span class="small dim">Shape follows you</span><select id="bubbleFollow">
+      <option value="little">A little (calm)</option><option value="more">More</option></select></label>
+    <p class="small dim hint" id="bubble-hint"></p>
+  </div>
+  <label class="row"><span>3‑2‑1 countdown</span><input type="checkbox" id="countdown" class="switch"></label>
+  <label class="row" id="share-row" hidden><span>Share link when done</span><input type="checkbox" id="share" class="switch"></label>
+  <p class="small dim hint" id="share-hint"></p>
+
+  <button class="btn primary big" id="record">Start recording</button>
+  <p class="small error" id="error" hidden></p>
+
+  <p class="small notice" id="unfinished" hidden></p>
+
+  <section id="recent-wrap" hidden>
+    <h2 class="small dim">Recent</h2>
+    <ul id="recent"></ul>
+  </section>
+
+  <footer class="small dim">
+    <a href="recordings.html" target="_blank">All recordings</a> ·
+    <a href="connect.html" target="_blank" id="share-link">Share site</a> ·
+    Stop: click ✦ or <kbd id="shortcut">Alt+Shift+S</kbd>
+  </footer>
+  <script type="module" src="popup.js"></script>
+</body></html>

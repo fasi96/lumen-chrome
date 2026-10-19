@@ -1,0 +1,24 @@
+<!doctype html>
+<!-- Test page for Lumen's automated tests: a moving picture and a steady 440 Hz tone,
+     so a tab recording has both video and audio to capture. -->
+<html><head><meta charset="utf-8"><title>Lumen test page</title>
+<style>body{margin:0;background:#111;color:#eee;font:24px sans-serif}canvas{display:block}</style></head>
+<body>
+<canvas id="c" width="640" height="360"></canvas>
+<p id="state">tone: starting</p>
+<script>
+  const c = document.getElementById('c'), g = c.getContext('2d');
+  let n = 0;
+  setInterval(() => {               // not rAF, so it keeps drawing in headless/background tabs
+    n++;
+    g.fillStyle = `hsl(${n * 3 % 360} 70% 40%)`; g.fillRect(0, 0, 640, 360);
+    g.fillStyle = '#fff'; g.fillRect((n * 8) % 640, 150, 60, 60);
+    g.font = '32px sans-serif'; g.fillText('frame ' + n, 20, 50);
+  }, 33);
+  // A quiet tone. Needs --autoplay-policy=no-user-gesture-required in tests.
+  const ac = new AudioContext(), osc = ac.createOscillator(), gain = ac.createGain();
+  osc.frequency.value = 440; gain.gain.value = 0.3; osc.connect(gain).connect(ac.destination); osc.start();
+  ac.resume().then(() => document.getElementById('state').textContent = 'tone: ' + ac.state);
+  window.toneState = () => ac.state;
+</script>
+</body></html>

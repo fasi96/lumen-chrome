@@ -1,0 +1,220 @@
+{
+  "codecs": {
+    "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "mime": {
+      "rows": [
+        {
+          "mime": "video/webm;codecs=vp9,opus",
+          "isTypeSupported": true,
+          "mimeType": "video/webm;codecs=vp9,opus",
+          "chunks": 5,
+          "bytes": 112430,
+          "blobType": "video/webm;codecs=vp9,opus",
+          "ok": true
+        },
+        {
+          "mime": "video/webm;codecs=vp8,opus",
+          "isTypeSupported": true,
+          "mimeType": "video/webm;codecs=vp8,opus",
+          "chunks": 5,
+          "bytes": 27187,
+          "blobType": "video/webm;codecs=vp8,opus",
+          "ok": true
+        },
+        {
+          "mime": "video/webm;codecs=h264,opus",
+          "isTypeSupported": true,
+          "mimeType": "video/webm;codecs=h264,opus",
+          "chunks": 5,
+          "bytes": 60232,
+          "blobType": "video/x-matroska;codecs=avc1,opus",
+          "ok": true
+        },
+        {
+          "mime": "video/webm;codecs=av1,opus",
+          "isTypeSupported": true,
+          "mimeType": "video/webm;codecs=av1,opus",
+          "chunks": 5,
+          "bytes": 28249,
+          "blobType": "video/webm;codecs=av01,opus",
+          "ok": true
+        },
+        {
+          "mime": "video/webm",
+          "isTypeSupported": true,
+          "mimeType": "video/webm",
+          "chunks": 5,
+          "bytes": 26221,
+          "blobType": "video/webm;codecs=vp8,opus",
+          "ok": true
+        },
+        {
+          "mime": "video/mp4",
+          "isTypeSupported": true,
+          "mimeType": "video/mp4",
+          "chunks": 2,
+          "bytes": 110891,
+          "blobType": "video/mp4;codecs=vp9,opus",
+          "ok": true
+        },
+        {
+          "mime": "video/mp4;codecs=avc1.42E01E,mp4a.40.2",
+          "isTypeSupported": false
+        },
+        {
+          "mime": "video/mp4;codecs=avc1,opus",
+          "isTypeSupported": true,
+          "mimeType": "video/mp4;codecs=avc1,opus",
+          "chunks": 2,
+          "bytes": 60482,
+          "blobType": "video/mp4;codecs=avc1,opus",
+          "ok": true
+        },
+        {
+          "mime": "video/mp4;codecs=vp9,opus",
+          "isTypeSupported": true,
+          "mimeType": "video/mp4;codecs=vp9,opus",
+          "chunks": 2,
+          "bytes": 111858,
+          "blobType": "video/mp4;codecs=vp9,opus",
+          "ok": true
+        },
+        {
+          "mime": "video/mp4;codecs=av01,opus",
+          "isTypeSupported": true,
+          "mimeType": "video/mp4;codecs=av01,opus",
+          "chunks": 2,
+          "bytes": 30448,
+          "blobType": "video/mp4;codecs=av01,opus",
+          "ok": true
+        },
+        {
+          "mime": "audio/webm;codecs=opus",
+          "isTypeSupported": true,
+          "mimeType": "audio/webm;codecs=opus",
+          "chunks": 5,
+          "bytes": 19529,
+          "blobType": "audio/webm;codecs=opus",
+          "ok": true
+        },
+        {
+          "mime": "audio/mp4;codecs=opus",
+          "isTypeSupported": true,
+          "mimeType": "audio/mp4;codecs=opus",
+          "chunks": 4,
+          "bytes": 19414,
+          "blobType": "audio/mp4;codecs=opus",
+          "ok": true
+        },
+        {
+          "mime": "audio/mp4;codecs=mp4a.40.2",
+          "isTypeSupported": false
+        }
+      ],
+      "webcodecs": {
+        "avc1.42E01E": false,
+        "avc1.640028": true,
+        "vp09.00.10.08": true,
+        "av01.0.04M.08": true,
+        "mp4a.40.2": false,
+        "opus": true
+      }
+    },
+    "displayMediaOffscreen_fakeUi": {
+      "ok": true,
+      "label": "screen:-3:0",
+      "displaySurface": "monitor",
+      "size": "800x600",
+      "audioTracks": 1,
+      "record": {
+        "mimeType": "video/webm;codecs=vp9,opus",
+        "chunks": 6,
+        "bytes": 57318,
+        "blobType": "video/webm;codecs=vp9,opus",
+        "ok": true
+      }
+    },
+    "tabCapture_fakeUi": {
+      "tab": {
+        "ok": false,
+        "error": "NotFoundError: Requested device not found"
+      }
+    },
+    "toneStateInPage": "running"
+  },
+  "tab": {
+    "tabCapture_av": {
+      "tab": {
+        "ok": true,
+        "size": "1920x1080",
+        "audioTracks": 1
+      },
+      "mic": {
+        "ok": true,
+        "label": "Fake Default Audio Input"
+      },
+      "micPermission": "granted",
+      "audioContextState": "running",
+      "levels": {
+        "tabDb": -13.5,
+        "micDb": -10.6,
+        "mixDb": -8.5
+      },
+      "record": {
+        "mimeType": "video/webm;codecs=vp9,opus",
+        "chunks": 7,
+        "bytes": 250290,
+        "blobType": "video/webm;codecs=vp9,opus",
+        "ok": true
+      }
+    }
+  },
+  "tabConsumer": {
+    "tabCapture_consumerTab": {
+      "ok": true,
+      "size": "800x600",
+      "audioTracks": 1
+    }
+  },
+  "screen": {
+    "desktop_noTab": {
+      "ok": false,
+      "error": "empty stream id (cancelled)"
+    },
+    "desktop_targetTab": {
+      "ok": false,
+      "error": "AbortError: Error starting tab capture"
+    },
+    "desktop_redeemInTargetPage": {
+      "ok": true,
+      "label": "web-contents-media-stream://59FFCAFF1C4A081B9D1B5558C0BDF91A",
+      "size": "800x600"
+    },
+    "displayMediaOffscreen": {
+      "ok": true,
+      "label": "web-contents-media-stream://EF779107B4E1A791F93534049DC311E4",
+      "displaySurface": "browser",
+      "size": "800x600",
+      "audioTracks": 1,
+      "record": {
+        "mimeType": "video/webm;codecs=vp9,opus",
+        "chunks": 6,
+        "bytes": 85463,
+        "blobType": "video/webm;codecs=vp9,opus",
+        "ok": true
+      }
+    },
+    "recorderTab_load": {
+      "ok": true,
+      "label": "web-contents-media-stream://21F43F2E5530F1DE1C5A6AA495E6A553",
+      "displaySurface": "browser",
+      "audioTracks": 1
+    },
+    "recorderTab_click": {
+      "ok": true,
+      "label": "web-contents-media-stream://3697629CD07FA7F5C5C6C90B9D13B95F",
+      "displaySurface": "browser",
+      "audioTracks": 1
+    }
+  }
+}

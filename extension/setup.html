@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Set up your share site</title>
+<link rel="icon" href="icons/icon32.png">
+<link rel="stylesheet" href="ui.css">
+<style>
+  main { max-width: 680px; margin: 0 auto; padding: 40px 16px 60px; display: flex; flex-direction: column; gap: 16px; }
+  h1 { margin: 0; font-size: 24px; } h1 .spark { color: var(--accent); }
+  .card { padding: 16px 18px; } .card h2 { margin: 0 0 8px; font-size: 15px; }
+  ol, ul { margin: 6px 0 0; padding-left: 22px; } li { margin: 3px 0; }
+  input[type=text], input[type=password], select { width: 100%; font: inherit; color: var(--text); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+  code, .perm { background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; font-size: 12.5px; }
+  #steps { list-style: none; padding: 0; } #steps li { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; }
+  #steps .ic { width: 18px; text-align: center; } #steps li.run .ic::before { content: "…"; } #steps li.ok .ic::before { content: "✓"; color: var(--ok); }
+  #steps li.fail .ic::before { content: "✗"; color: var(--rec); } #steps li.todo { color: var(--dim); }
+  #steps .detail { color: var(--dim); font-size: 12px; } #steps li.fail .detail { color: var(--rec); }
+  .err { color: var(--rec); } .ok { color: var(--ok); }
+  [hidden] { display: none !important; }
+  .key { font: 14px ui-monospace, monospace; word-break: break-all; padding: 10px; background: var(--bg); border: 1px dashed var(--accent); border-radius: 8px; }
+</style></head>
+<body><main>
+  <h1><span class="spark">✦</span> Set up your share site</h1>
+  <p class="dim">Lumen makes your share site on <b>your own</b> Cloudflare account: a small program (a “worker”) that
+    serves your links, plus storage for the videos (R2) and a little database (D1). There is no Lumen server, and nothing
+    goes anywhere but your account. It’s free for most people.</p>
+
+  <section class="card" id="s-token">
+    <h2>1. Let Lumen set it up, once</h2>
+    <ol>
+      <li>Cloudflare needs an account (free): <a href="https://dash.cloudflare.com/sign-up" target="_blank">sign up</a> if you
+        don’t have one.</li>
+      <li><b>Switch on R2</b> (video storage). Cloudflare asks for a payment method on file to do that, even though it stays
+        free up to 10 GB of videos and watching them is always free. <a id="r2-link" target="_blank">Open R2 in Cloudflare</a>.</li>
+      <li>Make an API token for Lumen. This button opens Cloudflare’s page with the right permissions already filled in:
+        <div id="perms"></div>
+        Optionally set “TTL” to end today: Lumen only needs it for the next few minutes and doesn’t keep it.
+        <div class="row"><a class="btn primary" id="token-link" target="_blank">Make the token on Cloudflare</a></div></li>
+      <li>Paste the token here:
+        <input type="password" id="token" placeholder="Cloudflare API token" autocomplete="off" spellcheck="false"></li>
+    </ol>
+    <div class="row"><button class="btn primary" id="check">Continue</button> <span id="t-msg" class="small"></span></div>
+    <p class="small dim">Lumen asks Chrome for permission to talk to api.cloudflare.com for this; nothing else.</p>
+  </section>
+
+  <section class="card" id="s-opts" hidden>
+    <h2>2. A couple of choices</h2>
+    <label id="acct-wrap" hidden><span class="small dim">Cloudflare account</span><select id="account"></select></label>
+    <label><span class="small dim">Your name on share pages and link previews (optional)</span>
+      <input type="text" id="owner" maxlength="60" placeholder="e.g. Sam Rivera"></label>
+    <div class="row"><button class="btn primary" id="create">Create my share site</button></div>
+  </section>
+
+  <section class="card" id="s-run" hidden>
+    <h2>3. Setting up</h2>
+    <ul id="steps"></ul>
+    <div id="ask-sub" hidden>
+      <p class="small">Your account needs a free <b>workers.dev</b> address first. Pick a name (it’s part of your links, e.g.
+        lumen-share-…<b>.yourname.workers.dev</b>):</p>
+      <div class="row"><input type="text" id="sub" placeholder="yourname" style="max-width:240px"> <button class="btn primary" id="sub-go">Use this name</button></div>
+    </div>
+    <div id="r2-fix" hidden>
+      <p class="small err">Cloudflare says R2 isn’t switched on for this account yet. Switch it on (it asks for a payment
+        method; you won’t be charged within the free 10 GB), then come back.</p>
+      <div class="row"><a class="btn" id="r2-open" target="_blank">Open R2 in Cloudflare</a> <button class="btn primary" id="retry">I switched it on — continue</button></div>
+    </div>
+    <div class="row" id="retry-row" hidden><button class="btn primary" id="retry2">Try again</button> <span class="small dim">It picks up where it stopped.</span></div>
+  </section>
+
+  <section class="card" id="s-done" hidden>
+    <h2>✓ Your share site is ready</h2>
+    <p>Share links now go to <a id="d-url" target="_blank"></a>. This browser is connected.</p>
+    <p><b>Save your owner key</b>. It opens your dashboard (all your videos, devices, passwords) from anywhere. Lumen for Chrome
+      does not keep it, and it is shown only now:</p>
+    <div class="key" id="d-admin"></div>
+    <div class="row"><button class="btn" id="d-copy">Copy key</button> <a class="btn" id="d-dash" target="_blank">Open my dashboard</a></div>
+    <p class="small dim">You can delete the Cloudflare API token now: <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">API tokens</a>.
+      Lumen has already forgotten it.</p>
+  </section>
+</main>
+<script type="module" src="setup.js"></script>
+</body></html>

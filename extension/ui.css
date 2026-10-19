@@ -1,0 +1,24 @@
+/* Shared look for Lumen's pages: dark, quiet, one violet accent (the ✦). */
+:root {
+  --bg: #121218; --panel: #1b1b24; --line: #2c2c3a; --text: #ececf3; --dim: #9a9ab0;
+  --accent: #8b8cf6; --accent-ink: #12121a; --rec: #dc2626; --ok: #34d399; --warn: #fbbf24;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg: #f7f7fb; --panel: #ffffff; --line: #e2e2ec; --text: #1a1a24; --dim: #5e5e75; --accent-ink: #fff; color-scheme: light; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; }
+.brand .spark { color: var(--accent); font-size: 18px; }
+.dim { color: var(--dim); }
+.small { font-size: 12px; }
+.btn { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 7px 12px; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+.btn.danger:hover { border-color: var(--rec); color: var(--rec); }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+.notice { border-left: 3px solid var(--warn); padding: 8px 10px; background: var(--panel); border-radius: 6px; }

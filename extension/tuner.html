@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Lumen · Sound</title>
+<link rel="icon" href="icons/icon32.png">
+<link rel="stylesheet" href="ui.css">
+<style>
+  main { max-width: 720px; margin: 0 auto; padding: 40px 16px; display: flex; flex-direction: column; gap: 16px; }
+  h1 { margin: 0; font-size: 24px; } h1 .spark { color: var(--accent); }
+  .card { padding: 16px 18px; } .card h2 { margin: 0 0 12px; font-size: 15px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  select { font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; min-width: 0; max-width: 100%; }
+  .btn.rec { color: var(--rec); font-weight: 600; } .btn.rec.on { background: var(--rec); color: #fff; border-color: var(--rec); }
+  .meter { flex: 1; min-width: 120px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .meter i { display: block; height: 100%; width: 0; background: var(--ok); transition: width .08s; }
+  .meter.clip i { background: var(--rec); }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chips button { border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 5px 12px; }
+  .chips button.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  .ab { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .ab button { border: 0; background: var(--bg); padding: 7px 12px; }
+  .ab button.on { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+  .sliders { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 12px 20px; margin-top: 14px; }
+  .slider .top { display: flex; justify-content: space-between; font-size: 13px; }
+  .slider .top b { font-weight: 500; } .slider .top span { color: var(--dim); font-variant-numeric: tabular-nums; }
+  .slider input { width: 100%; accent-color: var(--accent); margin: 4px 0 0; }
+  .slider .hint { font-size: 11px; color: var(--dim); }
+  .slider.off { opacity: .45; }
+  button:disabled { opacity: .45; cursor: default; }
+  .ab:has(button:disabled) { opacity: .45; }
+  #msg.err { color: var(--rec); } #msg.ok { color: var(--ok); }
+  kbd { font: 11px ui-monospace, monospace; border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+  [hidden] { display: none !important; }
+</style></head>
+<body><main>
+  <h1><span class="spark">✦</span> Sound</h1>
+  <p class="dim">Pick a preset or move the sliders, and hear the difference on a short sample of your voice straight
+    away. What you hear here is exactly what your recordings get. Each mic keeps its own sound. Everything runs on this
+    computer: your last sample for each mic is kept here (never sent) so you can come back and tweak.</p>
+
+  <section class="card">
+    <h2>1. Record a sample</h2>
+    <div class="row">
+      <select id="mic" aria-label="Mic"><option value="">Default mic</option></select>
+      <button class="btn rec" id="rec">● Record</button>
+      <div class="meter" id="meter"><i></i></div>
+      <span class="small dim" id="secs"></span>
+    </div>
+    <p class="small dim"><span id="rec-note">Talk the way you would in a video, for 10–20 seconds. Include a pause so noise
+      removal has something to work on.</span> <a href="#" id="forget" hidden>Delete sample</a></p>
+    <p class="small notice" id="perm" hidden>Lumen needs your OK to use the mic. <a href="welcome.html">Allow mic</a></p>
+  </section>
+
+  <section class="card" id="tune">
+    <h2>2. Make it sound right</h2>
+    <div class="row" style="justify-content: space-between">
+      <div class="chips" id="presets"></div>
+      <div class="row">
+        <button class="btn" id="play" title="Space" disabled>▶ Play</button>
+        <div class="ab" role="radiogroup" aria-label="Compare">
+          <button id="abT" class="on" title="B switches" disabled>Tuned</button><button id="abO" title="B switches" disabled>Original</button>
+        </div>
+      </div>
+    </div>
+    <div class="sliders" id="sliders"></div>
+    <div class="row" style="margin-top: 16px">
+      <button class="btn primary" id="save">Use for recordings</button>
+      <button class="btn" id="revert">Revert</button>
+      <span class="small" id="msg"></span>
+      <span class="small dim" style="margin-left:auto"><kbd>Space</kbd> play · <kbd>B</kbd> tuned/original</span>
+    </div>
+  </section>
+</main>
+<script type="module" src="tuner.js"></script>
+</body></html>

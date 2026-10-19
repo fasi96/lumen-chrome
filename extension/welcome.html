@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Welcome to Lumen</title>
+<link rel="icon" href="icons/icon32.png">
+<link rel="stylesheet" href="ui.css">
+<style>
+  main { max-width: 620px; margin: 0 auto; padding: 40px 16px; display: flex; flex-direction: column; gap: 16px; }
+  h1 { margin: 0; font-size: 26px; } h1 .spark { color: var(--accent); }
+  .card { padding: 16px 18px; } .card h2 { margin: 0 0 6px; font-size: 15px; }
+  ul { margin: 6px 0 0; padding-left: 20px; }
+  #mic-state.ok { color: var(--ok); } #mic-state.bad { color: var(--rec); }
+</style></head>
+<body><main>
+  <h1><span class="spark">✦</span> Lumen</h1>
+  <p>Record a tab or your screen with your voice, then save it as an MP4. Open source (MIT).</p>
+
+  <section class="card">
+    <h2>What Lumen captures, and where it goes</h2>
+    <ul>
+      <li>Only while you record: the tab, window or screen you choose, its sound when Chrome allows it, your mic if it’s on, and your camera if the face bubble is on.</li>
+      <li>The face bubble finds you in the camera picture with an AI model that runs inside Lumen, on this computer.</li>
+      <li>Recordings are saved in Chrome’s storage for Lumen <b>on this computer</b>, and stay there until you download or
+        delete them, shared or not.</li>
+      <li>Nothing is sent anywhere unless you turn on share links, and then only to <i>your own</i> Cloudflare account.
+        There is no Lumen server. No accounts, no analytics.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Let Lumen use your mic and camera</h2>
+    <p class="dim">Chrome asks once. Lumen records in the background, where Chrome can’t ask, so it asks here.
+      The camera is only for the face bubble, which is off until you turn it on.</p>
+    <p><button class="btn primary" id="allow">Allow microphone</button> <span id="mic-state" class="small"></span></p>
+    <p><button class="btn" id="allow-cam">Allow camera</button> <span id="cam-state" class="small"></span></p>
+  </section>
+
+  <section class="card">
+    <h2>How to record</h2>
+    <ul>
+      <li>Click ✦ in the toolbar (pin it from the puzzle-piece menu), choose <b>This tab</b> or <b>Screen or window</b>, and press Start.</li>
+      <li>To stop: click ✦ again, press <kbd id="shortcut">Alt+Shift+S</kbd> (change it at <a href="#" id="shortcuts-link">chrome://extensions/shortcuts</a>), or use Chrome’s “Stop sharing”.</li>
+      <li>Your recording opens in a new tab, ready to download.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Share links (optional)</h2>
+    <p class="dim">Get a link like Loom’s the moment you stop: it’s copied right away and the video uploads in the
+      background. Links live on your own share site, a free Cloudflare worker in your account. Already using Lumen on
+      Omarchy? Connect the share site you have.</p>
+    <p><a class="btn" href="connect.html">Set up share links</a></p>
+  </section>
+</main>
+<script type="module" src="welcome.js"></script>
+</body></html>

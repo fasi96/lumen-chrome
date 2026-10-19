@@ -1,0 +1,82 @@
+{
+  "tab": {
+    "cpuOff": 0.40645409143296196,
+    "cpuOn": 0.9200614911606457,
+    "byTypeOff": {
+      "browser": 0.02,
+      "utility": 0.02,
+      "zygote": 0,
+      "renderer": 0.28,
+      "gpu-process": 0.1
+    },
+    "byTypeOn": {
+      "browser": 0.05,
+      "utility": 0.04,
+      "zygote": 0,
+      "renderer": 0.59,
+      "gpu-process": 0.24
+    },
+    "stats": {
+      "frames": 352,
+      "segments": 67,
+      "cropMs": 1.0999999903142452,
+      "segMs": 1472.6000000014901,
+      "shapeMs": 37.29999998211861,
+      "drawMs": 0,
+      "draws": 0,
+      "maskArea": 0.516357421875,
+      "since": 15936.5,
+      "sent": 352,
+      "sendMs": 150.09999999403954,
+      "wallMs": 14773.39999999851,
+      "delegate": "CPU",
+      "inferMs": 1030.699999999255,
+      "copyMs": 12.400000005960464,
+      "painted": 352
+    },
+    "bubbleCores": 0.5136073997276838,
+    "ownCore": 0.11243857202594731,
+    "fps": 23.82660728065547,
+    "segPerSec": 4.535178090352035
+  },
+  "screen": {
+    "cpuOff": 0.8141143911439113,
+    "cpuOn": 0.9994618282463295,
+    "byTypeOff": {
+      "browser": 0.02,
+      "utility": -0.01,
+      "zygote": 0,
+      "renderer": 0.71,
+      "gpu-process": 0.1
+    },
+    "byTypeOn": {
+      "browser": 0.03,
+      "utility": 0.05,
+      "zygote": 0,
+      "renderer": 0.68,
+      "gpu-process": 0.24
+    },
+    "stats": {
+      "frames": 350,
+      "segments": 67,
+      "cropMs": 94.60000001639128,
+      "segMs": 1428.299999985844,
+      "shapeMs": 31.399999998509884,
+      "drawMs": 110.30000001564622,
+      "draws": 350,
+      "maskArea": 0.66094970703125,
+      "since": 46876.300000000745,
+      "written": 350,
+      "dropped": 0,
+      "composeMs": 509.6000000014901,
+      "wallMs": 14569.5,
+      "delegate": "CPU",
+      "inferMs": 956.6999999992549,
+      "copyMs": 10.899999991059303
+    },
+    "bubbleCores": 0.1853474371024182,
+    "ownCore": 0.14165894505660698,
+    "fps": 24.022787329695596,
+    "segPerSec": 4.598647860256015
+  }
+}

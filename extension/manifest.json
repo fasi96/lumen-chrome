@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "Lumen Recorder",
+  "version": "0.9.0",
+  "description": "Loom-style recorder: your face in a bubble, ums cut, a share link on your own Cloudflare. The MP4 stays yours. Open source.",
+  "homepage_url": "https://github.com/fasi96/lumen",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "offscreen",
+    "storage",
+    "unlimitedStorage",
+    "tabCapture",
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Lumen: record",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "toggle-recording": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Start recording this tab, or stop the recording"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "bubble.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "optional_host_permissions": [
+    "https://api.cloudflare.com/*"
+  ]
+}

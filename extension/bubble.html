@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Lumen bubble</title>
+<!-- Shown inside the page you're recording (tab mode), so it is recorded with it. -->
+<meta name="color-scheme" content="normal">
+<style>
+  html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; user-select: none; }
+  canvas { position: absolute; left: 0; top: 0; cursor: grab; touch-action: none; }
+  canvas.dragging { cursor: grabbing; }
+  #bar { position: absolute; left: 0; right: 0; bottom: 4px; top: auto; display: flex; justify-content: center; gap: 4px;
+         opacity: 0; transition: opacity .15s; pointer-events: none; font: 600 11px/1 system-ui, sans-serif; }
+  body.hover:not(.recording) #bar { opacity: 1; pointer-events: auto; }
+  #bar[style*="top"] { bottom: auto; }
+  #bar button { border: 0; border-radius: 99px; padding: 6px 10px; background: rgba(18,18,26,.88); color: #fff; cursor: pointer;
+                box-shadow: 0 1px 4px rgba(0,0,0,.4); }
+  #bar button:hover { background: #8b8cf6; color: #12121a; }
+  /* The pill (screen recordings): just this button; shown first, then on hover. */
+  #float { display: none; }
+  body.pill canvas, body.pill #bar, body.pill #msg { display: none; }
+  body.pill #float { display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; border: 0; border-radius: 99px;
+                     background: rgba(18,18,26,.9); color: #fff; cursor: pointer; font: 600 13px/1 system-ui, sans-serif;
+                     box-shadow: 0 2px 8px rgba(0,0,0,.4); opacity: 0; transition: opacity .3s; }
+  body.pill.hint #float, body.pill.hover #float { opacity: 1; }
+  body.pill #float:hover { background: #8b8cf6; color: #12121a; }
+  /* The question before a screen recording. */
+  #ask { display: none; }
+  body.ask canvas, body.ask #bar, body.ask #msg { display: none; }
+  body.ask #ask { display: flex; flex-direction: column; gap: 12px; position: absolute; inset: 0; padding: 18px 20px; border-radius: 16px;
+                  background: rgba(18,18,26,.96); color: #fff; font: 14px/1.4 system-ui, sans-serif; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+  #ask b { font-size: 15px; } #ask p { margin: 0; color: #b6b6c8; font-size: 12.5px; }
+  #ask .row { display: flex; gap: 8px; margin-top: auto; }
+  #ask button { flex: 1; border: 0; border-radius: 10px; padding: 9px 10px; font: 600 13px system-ui, sans-serif; cursor: pointer; }
+  #ask-yes { background: #8b8cf6; color: #12121a; } #ask-no { background: rgba(255,255,255,.1); color: #fff; }
+  /* Inside the floating window: the whole camera picture, and a way back to the page. */
+  body.float { background: #000; }
+  body.float canvas { cursor: default; }
+  body.float #bar, body.float #float { display: none; }
+  #back { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); display: none; border: 0; border-radius: 99px;
+          padding: 6px 12px; background: rgba(18,18,26,.88); color: #fff; cursor: pointer; font: 600 11px/1 system-ui, sans-serif;
+          opacity: 0; transition: opacity .15s; }
+  body.float #back { display: block; }
+  body.float.hover #back { opacity: 1; }
+  #msg { position: absolute; left: 0; right: 0; top: 40%; text-align: center; color: #fff; font: 12px system-ui;
+         text-shadow: 0 1px 3px #000; }
+</style></head>
+<body>
+  <canvas id="c"></canvas>
+  <div id="bar">
+    <button id="size" title="Size">M</button>
+    <button id="shape" title="Shape">Blob</button>
+    <button id="outline" title="Outline">Plain</button>
+    <button id="close" title="Close the bubble">✕</button>
+  </div>
+  <button id="float" title="Your camera in a window on top of every app; drag it anywhere">⧉ Show my camera</button>
+  <button id="back" title="Put the bubble back on the page">↩ Back to the page</button>
+  <div id="ask"><b>Show your camera while you record?</b>
+    <p>It floats over every app; drag it anywhere. On the screen you record, it’s what’s recorded. Elsewhere, Lumen draws your bubble into the video.</p>
+    <div class="row"><button id="ask-yes">⧉ Show my camera</button><button id="ask-no">Just record</button></div></div>
+  <div id="msg"></div>
+  <script type="module" src="bubble-frame.js"></script>
+</body></html>

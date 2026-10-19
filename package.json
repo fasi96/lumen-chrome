@@ -1,0 +1,36 @@
+{
+  "name": "lumen-chrome",
+  "version": "0.9.0",
+  "description": "Lumen for Chrome: record a tab or screen with your mic and save an MP4 (MV3 extension).",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "test": "node scripts/build.mjs && node test/record.mjs",
+    "icons": "scripts/icons.sh",
+    "test:bubble": "node scripts/build.mjs && node test/bubble.mjs",
+    "test:share": "node scripts/build.mjs && node test/share.mjs",
+    "test:setup": "node test/cfsetup.test.mjs",
+    "test:voice": "node scripts/build.mjs && node test/voice.mjs",
+    "test:float": "node scripts/build.mjs && node test/float.mjs",
+    "test:cleanup": "node test/cleanup.test.mjs",
+    "test:visible": "node test/visible.test.mjs",
+    "release": "node scripts/release.mjs"
+  },
+  "author": "fasi96",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "puppeteer-core": "^25.12.0"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^1.1.0",
+    "@sapphi-red/web-noise-suppressor": "^0.4.1",
+    "mediabunny": "^1.61.3"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fasi96/lumen-chrome"
+  }
+}
