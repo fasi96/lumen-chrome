@@ -41,7 +41,7 @@ What leaves your computer, and where to: [PRIVACY.md](PRIVACY.md).
 
 ## Install
 
-- **Chrome Web Store:** coming soon.
+- **Chrome Web Store:** [Lumen Recorder](https://chromewebstore.google.com/detail/lumen-recorder/dlilhiogimgebhhogacgcnanoononbaa), free.
 - **From source:**
 
   ```bash
